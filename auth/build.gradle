@@ -1,0 +1,16 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: '../android-config.gradle'
+
+ext {
+    package_id = 'Auth'
+    artifact_id = 'auth'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(":core")
+}
+
+apply from: "$rootDir/publishing/maven-publish.gradle"

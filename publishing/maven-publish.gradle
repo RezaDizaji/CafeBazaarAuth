@@ -1,0 +1,59 @@
+apply plugin: 'maven-publish'
+
+version = authVersionName
+group = 'com.farsitel.bazaar'
+
+
+android {
+    publishing {
+        singleVariant('release')
+    }
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+    if (android.sourceSets.main.hasProperty('kotlin')) {
+        from android.sourceSets.main.kotlin.srcDirs
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.farsitel.bazaar'
+                artifactId = project.artifact_id
+                version = authVersionName
+                artifact androidSourcesJar
+
+                pom {
+                    name = 'bazaarAuth'
+                    url = 'https://github.com/cafebazaar/CafeBazaarAuth'
+
+                    licenses {
+                        license {
+                            name = 'The Apache Software License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id = 'shayanpourvatan'
+                            name = 'Shayan Pourvatan'
+                            email = 'shayanpourvatan@gmail.com'
+                        }
+                    }
+
+                    scm {
+                        connection = 'https://github.com/cafebazaar/CafeBazaarAuth.git'
+                        developerConnection = 'https://github.com/cafebazaar/CafeBazaarAuth.git'
+                        url = 'https://github.com/cafebazaar/CafeBazaarAuth'
+                    }
+                }
+            }
+        }
+    }
+}
