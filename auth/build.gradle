@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply from: '../android-config.gradle'
 
 ext {
@@ -10,6 +11,7 @@ ext {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(":core")
+    implementation "androidx.constraintlayout:constraintlayout:$libraryVersions.constraintlayout"
 }
 
 apply from: "$rootDir/publishing/maven-publish.gradle"

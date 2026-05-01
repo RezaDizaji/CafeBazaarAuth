@@ -5,6 +5,7 @@ ext {
             'appcompat': '1.1.0',
             'fragment' : '1.1.0',
             'androidx' : '1.2.0',
+            'constraintlayout': '2.0.4',
 
             'junit' : '4.12'
     ]

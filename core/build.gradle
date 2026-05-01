@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply from: '../android-config.gradle'
 
 ext {
@@ -12,6 +13,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$libraryVersions.kotlin"
     implementation "androidx.appcompat:appcompat:$libraryVersions.appcompat"
     implementation "androidx.core:core-ktx:$libraryVersions.androidx"
+    implementation "androidx.constraintlayout:constraintlayout:$libraryVersions.constraintlayout"
 }
 
 apply from: "$rootDir/publishing/maven-publish.gradle"
